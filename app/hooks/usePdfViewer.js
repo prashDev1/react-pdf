@@ -4,9 +4,11 @@ const usePdfViewer = (pdfPath) => {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [scale, setScale] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
 
   const onDocumentLoadSuccess = ({ numPages }) => {
     setNumPages(numPages);
+    setIsLoading(false)
   };
 
   const goToPreviousPage = () => {
@@ -36,6 +38,7 @@ const usePdfViewer = (pdfPath) => {
   };
 
   return {
+    isLoading,
     numPages,
     pageNumber,
     scale,
